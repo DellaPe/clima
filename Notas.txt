@@ -1,0 +1,72 @@
+1) Material UI
+    >   npm install @mui/material @emotion/react @emotion/styled
+
+2) StoryBook
+    >   Nos permite ir creando contenido y como ser va ver.
+    >   npx storybook init
+    >   npm run storybook
+
+3) Atajos   
+    >   imp : Importar
+    >   rafcp : crear un componente funcion arror y con PropTypes
+
+4) Importo Typography para mostrar solo texto 
+    >   import Typography from '@mui/material/Typography';
+
+5) Test Automatico
+    >   crear el archivo ...test.jsx
+    >   importar
+        -   import {render} from '@testing-library/react'
+        -   import '@testing-library/jest-dom/extend-expect'
+    >   usar : const {findAllByRole} = render("<></>")
+    >   const cityAndCouCityComponent = await findAllByRole("heading") //Buscao lo que este buscando 
+    >   expect(cityAndCouCityComponent[0]).toHaveTextContent("Buenos Aires") //Comparo lo que este esperando 
+
+6)  install Jest para ver cosas de error mas visual. 
+
+7) Para agregar imagines ejecutamos:
+    >   npm i react.icons
+    >   import { WiCelsius } from "react-icons/wi";
+
+8) Proveedores de contexto: Hace que dos cosas igual si tienen un fondo distinto sean otra cosa. Esto Es bueno par aagrandar las cosas
+    >   import { IconContext }  from "react-icons"
+    >   Lo usamos 
+            <IconContext.Provider>
+                <.....>
+            </IconContext.Provider>
+
+9) Encapsular los compnentres
+    >   Poner index.jsx
+
+10) Diseño web responsivo
+    >   Adaptacion de las paginas a distintos dispositivos
+    >   Como base necesitamos agregar 
+        -   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> (Viene for default)
+    >   Otra cosa que podemos usar es reponsive UI (casi igual al bootstraps)
+    >   No usar tamaños fijos de pantallas asi se pueden adaptar bien las cosas. Usar Flexboc
+
+11) Responsivo
+    >   import Grid from '@mui/material/grid';  //Ponemos las columnas como querramos
+    >   para visualizar en celular:
+        -   npm install @storybook/addon-viewport
+        -   npm i -D @storybook/addon-viewport
+        -   module.exports = {
+                addons: ['@storybook/addon-viewport'],
+            };
+
+12) Emular eventro usando fireEvent de @testing-library/react' y agragar las cosas necesarias par aque finciones
+    >   agregamos import {action} form "@storybook/addon-actions" para emular el clil en storyBook
+
+13) Currying: Función que devuelve otra Función
+
+14) Para graficos: Reacharts
+    >   npm install recharts
+    >   import { LineChart } from 'recharts'
+
+15) React Router
+    >   npm install react-router-dom@5.1
+    >   Componente para redireccionar 
+        -  import { BrowserRouter } from "react-router-dom";
+        -   Switch ante varias direciones decide una
+        -   Route determinada url
+        -   <a> va entrer el Router contenedo y el swicth contenedor de los otros routers 
