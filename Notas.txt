@@ -66,7 +66,13 @@
 15) React Router
     >   npm install react-router-dom@5.1
     >   Componente para redireccionar 
-        -  import { BrowserRouter } from "react-router-dom";
+        -   import { BrowserRouter } from "react-router-dom";
         -   Switch ante varias direciones decide una
         -   Route determinada url
-        -   <a> va entrer el Router contenedo y el swicth contenedor de los otros routers 
+        -   <a> va entrer el Router contenedo y el swicth contenedor de los otros routers
+
+16) hooks nos permite modificar el componente de forma activa
+    >   import { useHistory } from 'react-router-dom' 
+        -   para manipular la historia del navegador.
+        -   Cambiamos el url de forma activa, no como el ancla que es link
+

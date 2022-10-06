@@ -31,7 +31,8 @@ const Forcast = ({forecastItemList}) => {
     <>
       <Grid container
         justify="center"
-        alignItems="center">
+        alignItems="center"
+        spacing={1}>
           {
             forecastItemList.map(forecast => renderForcastItem(forecast))
           }
