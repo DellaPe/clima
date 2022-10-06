@@ -15,15 +15,27 @@ const App = () => {
                 <Switch>
                     <Route exact path="/"> 
                         Welcome
+                        <div>
+                            <Link to="/main">Ir a Main</Link>
+                        </div>
                     </Route>
                     <Route path="/main">
                         Main
+                        <div>
+                            <Link to="/city">Ir a City</Link>
+                        </div>
                     </Route>
                     <Route path="/city">
                         City
+                        <div>
+                            <Link to="/main">Ir a Main</Link>
+                        </div>
                     </Route>
                     <Route>
                         Not Found
+                        <div>
+                            <Link to="/main">Ir a Main</Link>
+                        </div>
                     </Route>
                 </Switch>
             </Router>
