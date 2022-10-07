@@ -50,19 +50,18 @@ const CityPage = () => {
 
   const forecastItemList = [
     {weekDay:"Lunes", hour: 12, state:"sun", temperature:20},
-    {weekDay:"Martes", hour: 13, state:"sun", temperature:10},
+    {weekDay:"Martes", hour: 13, state:"cloud", temperature:10},
     {weekDay:"Miercoles", hour: 14, state:"sun", temperature:15},
-    {weekDay:"Jueves", hour: 15, state:"sun", temperature:13},
-    {weekDay:"Viernes", hour: 12, state:"sun", temperature:20},
-    {weekDay:"Sabado", hour: 13, state:"sun", temperature:10},
-    {weekDay:"Domingo", hour: 14, state:"sun", temperature:15},
+    {weekDay:"Jueves", hour: 15, state:"rain", temperature:13},
+    {weekDay:"Viernes", hour: 12, state:"gusts", temperature:20},
+    {weekDay:"Sabado", hour: 13, state:"hot", temperature:10},
+    {weekDay:"Domingo", hour: 14, state:"cold", temperature:15},
 ]
 
   return (
     <Grid container
       justifyContent="center"
-      direction="column"
-      sm={10}>
+      direction="column">
       <Grid item xs={12}>
         <CityInfo city={city} country={country} />
       </Grid>
@@ -74,10 +73,10 @@ const CityPage = () => {
           <WeatherDetails humidity={humidity} wind={wind} />
         </Grid>
       </Grid>
-      <Grid item>
-        <ForecastChart data={data}/>
+      <Grid item xs={12}>
+        <ForecastChart data={data} xs={12}/>
       </Grid>
-      <Grid item>
+      <Grid item xs={12}>
         <ForCast forecastItemList={forecastItemList}/>
       </Grid>
     </Grid>

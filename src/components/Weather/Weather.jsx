@@ -4,18 +4,23 @@ import Typography from '@mui/material/Typography';
 import { WiCelsius } from "react-icons/wi";
 import { IconContext }  from "react-icons"
 import IconState, {validValuesState} from './../IconState';
+import { Grid } from '@mui/material';
 
 const Weather = ({temperature, state}) => {
   return (
-    <div>
-      <IconContext.Provider value={{size: '3em'}}>
+    <Grid container item
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      spacing={1}>
+      <IconContext.Provider value={{size: '5em'}}>
         <IconState  state={state} />
       </IconContext.Provider>
       <Typography  display="inline" variant='h2'> {temperature} </Typography>  
-      <IconContext.Provider value={{size: '4em'}}>
+      <IconContext.Provider value={{size: '5em'}}>
         <WiCelsius display="inline"></WiCelsius>
       </IconContext.Provider>
-    </div>
+    </Grid>
   )
 }
 

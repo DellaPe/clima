@@ -62,6 +62,7 @@
 14) Para graficos: Reacharts
     >   npm install recharts
     >   import { LineChart } from 'recharts'
+    >   import { LineChart } from 'recharts' (para hacer su contenedor responsivo )
 
 15) React Router
     >   npm install react-router-dom@5.1
@@ -75,4 +76,6 @@
     >   import { useHistory } from 'react-router-dom' 
         -   para manipular la historia del navegador.
         -   Cambiamos el url de forma activa, no como el ancla que es link
+
+    
 
