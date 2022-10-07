@@ -77,5 +77,11 @@
         -   para manipular la historia del navegador.
         -   Cambiamos el url de forma activa, no como el ancla que es link
 
-    
+17) Hacemos AppFram para tener lo basico de una pag.
+    >   AppBar para tener una barra de navegacion 
+    >   Toolbar para barra de tareas
+    >   IconButton para tener un icono en forma de botton (no hace nada por su cuenta)
+        -   color="inherit" para que tenga el color del contenedor
+        -   aria-label='menu' hace referencia que estamos en un menu
+    >   
 

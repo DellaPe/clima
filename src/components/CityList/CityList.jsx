@@ -10,7 +10,7 @@ const renderCityAndCountry = (eventOnClickCity) => (cityAndCountry) => {
   const { city, country } = cityAndCountry;
   //sm={8} para tamaños sm para arriba 8 + 4, para el resto 12
   return (
-    <ListItem key={city} onClick={eventOnClickCity}>
+    <ListItem  button key={city} onClick={eventOnClickCity}>
       <Grid container justifyContent="center" alignItems="center">
         <Grid item md={8} sm={12}>
           <CityInfo city={city} country={country} />
