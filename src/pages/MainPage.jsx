@@ -18,13 +18,10 @@ const MainPage = () => {
 
   return (
     <div>
-      Main
-      <div>
-        <h2>Lista de Ciudades</h2>
-        <CityList 
-          cities={cities}
-          onClickCity={onClickHandler}/>
-      </div>
+       <h2>Lista de Ciudades</h2>
+      <CityList 
+         cities={cities}
+        onClickCity={onClickHandler}/>
     </div>
   )
 }

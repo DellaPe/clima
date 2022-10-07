@@ -12,9 +12,12 @@ const App = () => {
     return (
         <Grid container
             justifyContent="center"
-            direction="row"
-            sm={10}>
-            <Grid item sm={10}>
+            direction="row">
+            <Grid item 
+                xs={12}
+                sm={11}
+                md={10}
+                lg={8}>
                 <h1>Clima</h1>
                 <Router>
                     <Switch>
