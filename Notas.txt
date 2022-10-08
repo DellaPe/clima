@@ -96,6 +96,8 @@
     >   npm i three@0.115.0
     >   Para unsar esto tenemos que modificar el dom directamente, por emde samos useRef
         -   Creamos una constante y la asociamos directamente al dom del div.
+    >   import Clouds from "vanta/dist/vanta.clouds.min"
+    >   import * as THREE from "three" (Permite hacer animacion 3d)
 
 21) Algunas acciones habituales react las define como "Efectos secundarios o Efectos"
     >   Ejemplos:
@@ -105,3 +107,7 @@
     >   Para realizar estas acciones necesitamos usar useEffect 
         -   Se ejecutara siempre en forma posterio al proceso de renderizacion
         -   import { useEffect } drom 'react'
+        -   para usarlo useEffect(()=>{})
+        -   para asegurar que ande bien usamos callBack
+            o   const [variableFun, setVariableFun]
+            o   const callBack = () => {setVariableFun(variableFun+1)}
