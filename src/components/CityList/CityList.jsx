@@ -40,12 +40,13 @@ const CityList = ({ cities, onClickCity }) => {
   useEffect(() => {
     
     const setWeather = (city, country) => {
-      const apiKey = "b1907a1349b8dc3a835d896d914dc02c"
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-      axios.get(url) //Ingresa a cada ciudad y me trae los datos
-      .them(response =>{//Lo que venga en then es porque la peticion fue exitosa
+      const apiKey = "b1907a1349b8dc3a835d896d914dc02c";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+      axios
+      .get(url) //Ingresa a cada ciudad y me trae los datos
+      .then(response =>{//Lo que venga en then es porque la peticion fue exitosa
         const { data } = response
-        const temperature = data.main.temp
+        const temperature = Math.round(data.main.temp -273.16)
         const state = "sun"
         setAllWeather(allWeather =>({ ...allWeather, [`${city}-${country}`]: { temperature, state } })) //[Buenas Aires-Argentina]: { datos }
       }) 
