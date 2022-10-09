@@ -111,3 +111,14 @@
         -   para asegurar que ande bien usamos callBack
             o   const [variableFun, setVariableFun]
             o   const callBack = () => {setVariableFun(variableFun+1)}
+
+22) Api Clima Gratuita https://openweathermap.org/
+    >   pedro_11_03  TuviejaTu key: b1907a1349b8dc3a835d896d914dc02c
+    >   ejemplo: https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&appid=b1907a1349b8dc3a835d896d914dc02c
+    >   Postman es para hacer pruebas  pero uso el Thunder
+
+23) hooks para usar la API: (Todo en city list)
+    >   useState: administra el momento en cuando vamos hacer la solicitud
+    >   useEffect: establece el estado segun la api
+    >   Para trnbajar con servidores podemos usar fetch o una libreria axios
+        -   npm i axios => import axios from 'axios'
