@@ -11,7 +11,7 @@ const MainPage = () => {
 
   const cities = [
     {city: "Buenos Aires", country: "Argentina"},
-    {city: "Bogotá", country: "Colombia"},
+    {city: "Tapalqué", country: "Argentina"},
     {city: "Lima", country: "Perú"},
     {city: "Madrid", country: "España"},
   ]

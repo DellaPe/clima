@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Typography from '@mui/material/Typography';
+import { Skeleton } from '@mui/material';
 import { WiCelsius } from "react-icons/wi";
 import { IconContext }  from "react-icons"
 import IconState, {validValuesState} from './../IconState';
@@ -14,9 +15,19 @@ const Weather = ({temperature, state}) => {
       alignItems="center"
       spacing={1}>
       <IconContext.Provider value={{size: '5em'}}>
-        <IconState  state={state} />
+        {
+          state ?
+          (<IconState  state={state} />)
+          :
+          <Skeleton variant="circular" height={80} width={80}></Skeleton>
+        }
       </IconContext.Provider>
-      <Typography  display="inline" variant='h2'> {temperature} </Typography>  
+      {
+        temperature ?
+        <Typography  display="inline" variant='h2'> {temperature} </Typography>
+        :
+        <Skeleton variant="rectangular" height={80} width={80}></Skeleton>
+      }  
       <IconContext.Provider value={{size: '5em'}}>
         <WiCelsius display="inline"></WiCelsius>
       </IconContext.Provider>
@@ -25,8 +36,8 @@ const Weather = ({temperature, state}) => {
 }
 
 Weather.propTypes = {
-    temperature: PropTypes.number.isRequired,
-    state: PropTypes.oneOf(validValuesState).isRequired, //oneOf() = uno de estos es valido
+    temperature: PropTypes.number,
+    state: PropTypes.oneOf(validValuesState), //oneOf() = uno de estos es valido
 }
 
 export default Weather

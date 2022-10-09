@@ -122,3 +122,11 @@
     >   useEffect: establece el estado segun la api
     >   Para trnbajar con servidores podemos usar fetch o una libreria axios
         -   npm i axios => import axios from 'axios'
+
+24) Libretia para hacer conversiones 
+    >   convert-units
+    >   npm i convert-units
+    >   import convertUnit from 'convert-units'
+
+25) Skeleton: es para cuando no hay datos que tenga la misma vista esperando al servidor. 
+    >   import { Skeleton } from "@mui/material"

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import axios from 'axios'
+import convertUnit from 'convert-units'
 import Typography from "@mui/material/Typography";
+
 import Grid from "@mui/material/grid";
 import CityInfo from "./../CityInfo";
 import Weather from "./../Weather";
@@ -14,14 +16,11 @@ const renderCityAndCountry = (eventOnClickCity) => (cityAndCountry, weather) => 
   return (
     <ListItem  button key={city} onClick={eventOnClickCity}>
       <Grid container justifyContent="center" alignItems="center">
-        <Grid item md={8} sm={12}>
+        <Grid item md={8} sm={12} xs={12}>
           <CityInfo city={city} country={country} />
         </Grid>
-        <Grid item md={4} sm={12}>
-          {
-            weather ? 
-            <Weather temperature={weather.temperature} state={weather.state} /> : ("No hay datos")
-          }
+        <Grid item md={4} sm={12} xs={12}>
+            <Weather temperature={weather && weather.temperature} state={weather && weather.state} />
         </Grid>
       </Grid>
     </ListItem>
@@ -46,7 +45,7 @@ const CityList = ({ cities, onClickCity }) => {
       .get(url) //Ingresa a cada ciudad y me trae los datos
       .then(response =>{//Lo que venga en then es porque la peticion fue exitosa
         const { data } = response
-        const temperature = Math.round(data.main.temp -273.16)
+        const temperature = Number(convertUnit(data.main.temp).from("K").to("C").toFixed(0))
         const state = "sun"
         setAllWeather(allWeather =>({ ...allWeather, [`${city}-${country}`]: { temperature, state } })) //[Buenas Aires-Argentina]: { datos }
       }) 
