@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/grid";
 import CityInfo from "./../CityInfo";
 import Weather from "./../Weather";
-import {List, ListItem} from "@mui/material"
+import {Alert, List, ListItem} from "@mui/material"
 
 const renderCityAndCountry = (eventOnClickCity) => (cityAndCountry, weather) => {
   const { city, country } = cityAndCountry;
@@ -34,6 +34,7 @@ const CityList = ({ cities, onClickCity }) => {
       [Lima-Peru]: { datos }...
   */
   const [allWeather, setAllWeather] = useState({})
+  const [error, setError] = useState(null)
 
   //Aca invicamos anuestra api
   useEffect(() => {
@@ -48,7 +49,17 @@ const CityList = ({ cities, onClickCity }) => {
         const temperature = Number(convertUnit(data.main.temp).from("K").to("C").toFixed(0))
         const state = "sun"
         setAllWeather(allWeather =>({ ...allWeather, [`${city}-${country}`]: { temperature, state } })) //[Buenas Aires-Argentina]: { datos }
-      }) 
+      })
+      .catch( error => {
+        //Error 1: El servidor responde algo que no queremos. 
+        if(error.response) {
+          setError("Error de servidor")
+        } else if (error.request){ //Error 2: El server no responde, no llegamos al server
+          setError(" Error de coneccion")
+        } else{ //Error 3: Que no conocemos. 
+          setError("Error imprevisto")
+        }
+      })
     }
     //Recorremos el arreglo de ciuddades que carguemos
     cities.forEach(({ city, country}) => {
@@ -61,8 +72,15 @@ const CityList = ({ cities, onClickCity }) => {
 
   //const weather = { temperature: 200, state:"sun"}
   return (
-    <List>
-      <Typography>
+    <div>
+      { //onClose para que salte la x
+        error && 
+        <Alert onClose={()=>setError(null)} variant="outlined" severity="error">
+          {error}
+        </Alert>
+      
+      }
+      <List>
         {
           //renderCityAndCountry se transforma en una func que tetorna otra fucn
           cities.map((cityAndCountry) =>
@@ -70,8 +88,8 @@ const CityList = ({ cities, onClickCity }) => {
               allWeather[`${cityAndCountry.city}-${cityAndCountry.country}`])
           )
         }
-      </Typography>
-    </List>
+      </List>
+    </div>
   );
 };
 

@@ -130,3 +130,5 @@
 
 25) Skeleton: es para cuando no hay datos que tenga la misma vista esperando al servidor. 
     >   import { Skeleton } from "@mui/material"
+
+26) Alert de material ui.
