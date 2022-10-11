@@ -7,4 +7,4 @@ export default {
     title: "Error Boundary"
 }
 
-const ErrorBoundary = () => <ErrorBoundary /> 
+export const ErrorBoundaryExample = () => <ErrorBoundary /> 

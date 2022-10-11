@@ -5,8 +5,8 @@ import { Paper } from '@mui/material'
 import CityList from "./../components/CityList"
 const MainPage = () => {
   const history = useHistory()
-  const onClickHandler = () => {
-    history.push("/city")
+  const onClickHandler = (city, country) => {
+    history.push(`/city/${country}/${city}`)
   }
 
   const cities = [

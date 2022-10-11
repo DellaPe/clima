@@ -15,7 +15,8 @@ const renderCityAndCountry = (eventOnClickCity) => (cityAndCountry, weather) => 
   
   //sm={8} para tamaños sm para arriba 8 + 4, para el resto 12
   return (
-    <ListItem  button key={getCityCode(city, countryCode)} onClick={eventOnClickCity}>
+    <ListItem  button key={getCityCode(city, country)} 
+      onClick={ () => eventOnClickCity(city, country)}>
       <Grid container justifyContent="center" alignItems="center">
         <Grid item md={8} sm={12} xs={12}>
           <CityInfo city={city} country={country} />
@@ -42,7 +43,7 @@ const CityList = ({ cities, onClickCity }) => {
     
     const setWeather = async (city, countryCode) => {
       const apiKey = "b1907a1349b8dc3a835d896d914dc02c";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}`;
       
       try {
         const response = await axios.get(url) //Ingresa a cada ciudad y me trae los datos
