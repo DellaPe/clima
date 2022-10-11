@@ -10,8 +10,8 @@ const MainPage = () => {
   }
 
   const cities = [
-    {city: "Buenos Aires", country: "Argentina"},
     {city: "Tapalqué", country: "Argentina"},
+    {city: "La Plata", country: "Argentina"},
     {city: "Lima", country: "Perú"},
     {city: "Madrid", country: "España"},
   ]
