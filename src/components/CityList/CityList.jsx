@@ -49,9 +49,7 @@ const CityList = ({ cities, onClickCity }) => {
         const response = await axios.get(url) //Ingresa a cada ciudad y me trae los datos
         const { data } = response
         const temperature = Number(convertUnit(data.main.temp).from("K").to("C").toFixed(0))
-        const state = "sun"
-        console.log(state)
-
+        const state = data.weather[0].main
         const cityProps = getCityCode(city, countryCode)
         const valueProps = { temperature, state }
 

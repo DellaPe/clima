@@ -10,7 +10,7 @@ import ForecastItem from './../ForecastItem'
 
 
 
-const renderForcastItem = forecast => {
+const renderForecastItem = forecast => {
   const {weekDay, hour, state, temperature} = forecast
   return (
     <Grid 
@@ -26,14 +26,14 @@ const renderForcastItem = forecast => {
 }
 
 
-const Forcast = ({forecastItemList}) => {
+const Forecast = ({forecastItemList}) => {
   return (
     <>
       <Grid container
         justifyContent="space-around"
         alignItems="center">
           {
-            forecastItemList.map(forecast => renderForcastItem(forecast))
+            forecastItemList.map(forecast => renderForecastItem(forecast))
           }
 
       </Grid>
@@ -41,7 +41,7 @@ const Forcast = ({forecastItemList}) => {
   )
 }
 
-Forcast.propTypes = {
+Forecast.propTypes = {
   forecastItemList: PropTypes.arrayOf(PropTypes.shape({
     weekDay: PropTypes.string.isRequired, 
     hour: PropTypes.number.isRequired, 
@@ -50,4 +50,4 @@ Forcast.propTypes = {
   })).isRequired
 }
 
-export default Forcast
+export default Forecast
