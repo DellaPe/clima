@@ -1,33 +1,34 @@
 import React from "react";
-import { BrowserRouter as Router,
+import {
+    BrowserRouter as Router,
     Switch,
-    Route,
-    Link} from "react-router-dom";
+    Route
+} from "react-router-dom";
+import { Grid } from "@mui/material";
+import WelcomePage from "./pages/WelcomePage"
+import MainPage from "./pages/MainPage"
+import CityPage from "./pages/CityPage"
+import NotFoundPage from "./pages/NotFoundPage";
+
 
 const App = () => {
     return (
-        <div>
-            <h1>Clima</h1>
-            <Router>
-                <div>
-                    <Link to="/main">Ir a Main</Link>
-                </div>
-                <Switch>
-                    <Route exact path="/"> 
-                        Welcome
-                    </Route>
-                    <Route path="/main">
-                        Main
-                    </Route>
-                    <Route path="/city">
-                        City
-                    </Route>
-                    <Route>
-                        Not Found
-                    </Route>
-                </Switch>
-            </Router>
-        </div>
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <WelcomePage />
+                </Route>
+                <Route path="/main">
+                    <MainPage />
+                </Route>
+                <Route path="/city/:country/:city">
+                    <CityPage />
+                </Route>
+                <Route>
+                    <NotFoundPage />
+                </Route>
+            </Switch>
+        </Router>
     );
 }
 //Poenr el Ruter de "/" al final o poner exact

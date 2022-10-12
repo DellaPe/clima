@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts'
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 
 const ForecastChart = ({data}) => {
   return (
-    <LineChart
-        height={250}
-        width={700}
+    <ResponsiveContainer height={250} width={"95%"}>
+      <LineChart
         margin={{top: 20, botton: 20, left: 5, right: 5}}
         data={data}>
             <CartesianGrid></CartesianGrid>
@@ -16,7 +15,8 @@ const ForecastChart = ({data}) => {
             <Legend></Legend>
             <Line type="monotone" dataKey="max" stroke="#0000FF" ></Line>
             <Line type="monotone" dataKey="min" stroke="#FF0000" ></Line>
-    </LineChart>
+      </LineChart>
+    </ResponsiveContainer>
   )
 }
 

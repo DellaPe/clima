@@ -1,6 +1,6 @@
 import React from "react";
 
-import Forcast from "./Forcast";
+import Forecast from "./Forecast";
 
 export default {
     component: Forcast,
@@ -15,4 +15,4 @@ const forecastItemList = [
     {weekDay:"Sabado", hour: 13, state:"sun", temperature:10},
     {weekDay:"Domingo", hour: 14, state:"sun", temperature:15},
 ]
-export const ForcastExample = () => (<Forcast forecastItemList={forecastItemList}/>)
+export const ForecastExample = () => (<Forecast forecastItemList={forecastItemList}/>)

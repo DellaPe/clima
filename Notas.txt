@@ -62,11 +62,80 @@
 14) Para graficos: Reacharts
     >   npm install recharts
     >   import { LineChart } from 'recharts'
+    >   import { LineChart } from 'recharts' (para hacer su contenedor responsivo )
 
 15) React Router
     >   npm install react-router-dom@5.1
     >   Componente para redireccionar 
-        -  import { BrowserRouter } from "react-router-dom";
+        -   import { BrowserRouter } from "react-router-dom";
         -   Switch ante varias direciones decide una
         -   Route determinada url
-        -   <a> va entrer el Router contenedo y el swicth contenedor de los otros routers 
+        -   <a> va entrer el Router contenedo y el swicth contenedor de los otros routers
+
+16) hooks nos permite modificar el componente de forma activa
+    >   import { useHistory } from 'react-router-dom' 
+        -   para manipular la historia del navegador.
+        -   Cambiamos el url de forma activa, no como el ancla que es link
+
+17) Hacemos AppFram para tener lo basico de una pag.
+    >   AppBar para tener una barra de navegacion 
+    >   Toolbar para barra de tareas
+    >   IconButton para tener un icono en forma de botton (no hace nada por su cuenta)
+        -   color="inherit" para que tenga el color del contenedor
+        -   aria-label='menu' hace referencia que estamos en un menu
+    >   A link lo asociamos con el link del react-router-dom 
+        -   component={LinkRouter}
+        -   Ahora en el stories temgo que tmbien pasarle el router
+
+18) children, es una palabra reservada
+
+19) import { Paper } from '@mui/material' para dar un fondito 
+
+20) Vanta libreria de animaciones (hay que instalar las 2)
+    >   npm i vanta@0.5.14
+    >   npm i three@0.115.0
+    >   Para unsar esto tenemos que modificar el dom directamente, por emde samos useRef
+        -   Creamos una constante y la asociamos directamente al dom del div.
+    >   import Clouds from "vanta/dist/vanta.clouds.min"
+    >   import * as THREE from "three" (Permite hacer animacion 3d)
+
+21) Algunas acciones habituales react las define como "Efectos secundarios o Efectos"
+    >   Ejemplos:
+        -   Peticiones de datos a un servidor
+        -   Subscripciones a conencitos por socket
+        -   Actualizaciones manuales del dom 
+    >   Para realizar estas acciones necesitamos usar useEffect 
+        -   Se ejecutara siempre en forma posterio al proceso de renderizacion
+        -   import { useEffect } drom 'react'
+        -   para usarlo useEffect(()=>{})
+        -   para asegurar que ande bien usamos callBack
+            o   const [variableFun, setVariableFun]
+            o   const callBack = () => {setVariableFun(variableFun+1)}
+
+22) Api Clima Gratuita https://openweathermap.org/
+    >   pedro_11_03  TuviejaTu key: b1907a1349b8dc3a835d896d914dc02c
+    >   ejemplo: https://api.openweathermap.org/data/2.5/weather?q=Buenos Aires&appid=b1907a1349b8dc3a835d896d914dc02c
+    >   Postman es para hacer pruebas  pero uso el Thunder
+
+23) hooks para usar la API: (Todo en city list)
+    >   useState: administra el momento en cuando vamos hacer la solicitud
+    >   useEffect: establece el estado segun la api
+    >   Para trnbajar con servidores podemos usar fetch o una libreria axios
+        -   npm i axios => import axios from 'axios'
+
+24) Libretia para hacer conversiones 
+    >   convert-units
+    >   npm i convert-units
+    >   import convertUnit from 'convert-units'
+
+25) Skeleton: es para cuando no hay datos que tenga la misma vista esperando al servidor. 
+    >   import { Skeleton } from "@mui/material"
+
+26) Alert de material ui.
+
+27) useParams es para obtener info de la url. Los paramametors que pasa estan en app (city) 
+
+28) Api forecast
+    >   https://api.openweathermap.org/data/2.5/forecast?q=Buenos Aires&appid=b1907a1349b8dc3a835d896d914dc02c
+
+29) Moment libreria para manipular datos , par aeste caso fechas 

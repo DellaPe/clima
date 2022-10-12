@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import Forcast from './Forcast';
+import Forecast from './Forecast';
 
 const forecastItemList = [
     {weekDay:"Lunes", hour: 12, state:"sun", temperature:20},
@@ -14,10 +14,10 @@ const forecastItemList = [
     {weekDay:"Domingo", hour: 14, state:"sun", temperature:15},
 ]
 
-test('Forcast Render',async () => {
+test('Forecast Render',async () => {
     //Buscamos en trodos los codigos el data_testid="forecast-item-container"
     const {findAllByTestId} = render(
-        <Forcast 
+        <Forecast 
             forecastItemList={forecastItemList} />)
 
     const resultRender = await findAllByTestId("forecast-item-container")

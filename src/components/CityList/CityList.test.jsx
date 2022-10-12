@@ -12,7 +12,7 @@ const cities = [
 test("City List Render", async () => {
     const fnClickOnItem = jest.fn()
     const {findAllByRole} = render(<CityList cities={cities} onClickCity={fnClickOnItem}/>)
-    const renderReturCityList = await findAllByRole("listitem")
+    const renderReturCityList = await findAllByRole("button")
 
     expect(renderReturCityList).toHaveLength(4)
     
@@ -24,7 +24,7 @@ test("City List Click", async() => {
 
     const {findAllByRole} = render(<CityList cities={cities} onClickCity={fnClickOnItem} />)
 
-    const renderReturtClick = await findAllByRole("listitem")
+    const renderReturtClick = await findAllByRole("button")
 
     //Creamos la funcion que va imitar 
     fireEvent.click(renderReturtClick[0]) //Cliqueo en la primera ciudad (Bs As)
