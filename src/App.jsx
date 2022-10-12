@@ -4,7 +4,6 @@ import {
     Switch,
     Route
 } from "react-router-dom";
-import { Grid } from "@mui/material";
 import WelcomePage from "./pages/WelcomePage"
 import MainPage from "./pages/MainPage"
 import CityPage from "./pages/CityPage"

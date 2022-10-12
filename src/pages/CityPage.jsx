@@ -2,6 +2,11 @@ import React, { useState, useEffect} from 'react'
 import { Grid } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import axios from "axios"
+
+import convertUnit from 'convert-units'
+import moment from 'moment'
+import 'moment/locale/es' //Para tener los formatos en español
+
 import CityInfo from './../components/CityInfo'
 import Weather from './../components/Weather'
 import WeatherDetails from './../components/WeatherDetails'
@@ -9,6 +14,7 @@ import ForecastChart from './../components/ForecastChart'
 import Forecast from './../components/Forecast'
 import AppFrame from '../components/AppFrame'
 import { Paper } from '@mui/material'
+
 
 const dataExample = [
   {
@@ -55,26 +61,56 @@ const forecastItemListExample = [
 
 const CityPage = () => {
 
-  const params = useParams()
-  console.log(params)
+  const {city, country} = useParams()
 
-  const city = "Buenas Aires"
-  const country = "Argentina"
   const temperature = 23
   const state = "Clouds"
   const humidity = 20
   const wind = 12
 
   const apiKey = "b1907a1349b8dc3a835d896d914dc02c"
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${params.city}&appid=${apiKey}`
+  
   
   const [data, setData] = useState(null)
   const [forecastItemList, setForecastItemList] = useState(null)
 
-  useEffect(() => {
-    setData(dataExample)
-    setForecastItemList(forecastItemListExample)
-  }, [])
+  useEffect( () => {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${apiKey}`
+
+    const FuncAsync = async () => {
+      try {
+        const {data} = await axios.get(url)
+
+        const daysAhead = [0, 1, 2 , 3, 4, 5] //Dias para adelantes
+        const days = daysAhead.map( d => moment().add(d,'d'))
+        const dataAux = days.map(d => {
+          //Recorro todo con el map la lista de forecast
+          const tempObjArray = data.list.filter(item => {
+            //Me fijo con moment que dia 
+            const dayOfYear = moment.unix(item.dt).dayOfYear()
+            return dayOfYear === d.dayOfYear()
+          })
+          console.log(tempObjArray)
+
+          const temps = tempObjArray.map( item => item.main.temp)
+          return ({
+            dayHour: d.format("ddd"), //Formatea el dia en 3 caracteres
+            min: Number(convertUnit(Math.min(...temps)).from("K").to("C").toFixed(0)), //Destructuring
+            max: Number(convertUnit(Math.max(...temps)).from("K").to("C").toFixed(0))
+          })
+        })
+        
+        
+        setData(dataAux)
+        setForecastItemList(forecastItemListExample)
+      } catch (error) {
+        console.log(error)
+      }
+      
+    }
+
+    FuncAsync()
+  }, [city, country])
   
   
 
@@ -87,7 +123,7 @@ const CityPage = () => {
           <Grid container item xs={12}
             justifyContent="center"
             alignItems="flex-end">
-            <CityInfo city={params.city} country={params.country} />
+            <CityInfo city={city} country={country} />
           </Grid>
           <Grid container xs={12}
             justifyContent="space-evenly"

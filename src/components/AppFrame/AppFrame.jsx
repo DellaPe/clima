@@ -1,5 +1,4 @@
 import React from 'react'
-import { PropTypes } from '@mui/material'
 import { Typography, Grid, AppBar, Toolbar, IconButton, Link} from '@mui/material'
 import { Link as LinkRouter } from "react-router-dom"
 import {IconContext} from "react-icons"

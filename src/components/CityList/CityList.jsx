@@ -11,7 +11,7 @@ import {Alert, List, ListItem} from "@mui/material"
 const getCityCode = (city, countryCode) => `${city}-${countryCode}`
 
 const renderCityAndCountry = (eventOnClickCity) => (cityAndCountry, weather) => {
-  const { city, countryCode,country } = cityAndCountry;
+  const { city, country } = cityAndCountry;
   
   //sm={8} para tamaños sm para arriba 8 + 4, para el resto 12
   return (
@@ -41,16 +41,18 @@ const CityList = ({ cities, onClickCity }) => {
   //Aca invicamos anuestra api
   useEffect(() => {
     
-    const setWeather = async (city, countryCode) => {
+    const setWeather = async (city, country) => {
       const apiKey = "b1907a1349b8dc3a835d896d914dc02c";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}`;
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}`;
       
       try {
         const response = await axios.get(url) //Ingresa a cada ciudad y me trae los datos
         const { data } = response
         const temperature = Number(convertUnit(data.main.temp).from("K").to("C").toFixed(0))
         const state = data.weather[0].main
-        const cityProps = getCityCode(city, countryCode)
+
+        
+        const cityProps = getCityCode(city, country)
         const valueProps = { temperature, state }
 
         setAllWeather(allWeather =>({ ...allWeather, [cityProps]: valueProps })) //[Buenas Aires-Argentina]: { datos }
