@@ -16,7 +16,7 @@ const ForecastItem = ({weekDay, hour, state, temperature}) => {
                     <Typography>{weekDay}</Typography>
                 </Grid>
                 <Grid item>
-                    <Typography>{hour}</Typography>
+                    <Typography>{hour} hs</Typography>
                 </Grid>
                 <Grid item>
                     <IconContext.Provider value={{size: '5em'}}>

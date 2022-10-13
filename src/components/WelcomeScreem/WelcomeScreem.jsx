@@ -5,8 +5,6 @@ import * as THREE from "three"
 const WelcomeScreem = ({ children }) => {
   const myrefDiv = useRef(null)
   const [Vanta, setVanta] = useState(0)
-  console.log("myRefDiv: ", myrefDiv.current)
-
   useEffect(() => {
     //Solo pasa una vez por el if
     //Vanta === False

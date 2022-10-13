@@ -140,3 +140,6 @@
 
 29) Moment libreria para manipular datos , par aeste caso fechas 
     > 
+
+30) hooks personalizados
+    >   siempre tiene que iniciar use
