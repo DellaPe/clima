@@ -6,10 +6,6 @@ import {validValuesState} from './../IconState';
 
 import ForecastItem from './../ForecastItem'
 
-
-
-
-
 const renderForecastItem = forecast => {
   const {weekDay, hour, state, temperature} = forecast
   return (
@@ -24,7 +20,6 @@ const renderForecastItem = forecast => {
     </Grid>
   ) 
 }
-
 
 const Forecast = ({forecastItemList}) => {
   return (

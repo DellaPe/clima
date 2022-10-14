@@ -7,7 +7,7 @@ import {getForecastUrl} from './../utils/urls'
 import  getData  from "./../utils/transform/getData"
 
 const useCityPage = () => {
-  const { city, country } = useParams();
+  const { city, country} = useParams();
   
 
   const [data, setData] = useState(null);

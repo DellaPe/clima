@@ -12,19 +12,22 @@ import AppFrame from '../components/AppFrame'
 import { Paper } from '@mui/material'
 
 import useCityPage from '../hooks/useCityPage'
+import useCityList from '../hooks/useCityList'
+
+import getCityCode from "./../utils/getCityCode"
 
 const CityPage = () => {
-
-  
-
-  const temperature = 23
-  const state = "Clouds"
-  const humidity = 20
-  const wind = 12
-  
   
   const {city, country, data, forecastItemList} = useCityPage()
+  //Vemos si cambiar el valor de city y de country
+  const cities = React.useMemo( () => ([{city, country}]),[city, country]) //Recordar que es como tener un return
+  const { allWeather } = useCityList(cities)
+  const weather = allWeather[getCityCode(city, country)]
 
+  const temperature = weather && weather.temperature
+  const state = weather && weather.state
+  const humidity = weather && weather.humidity
+  const speed = weather && weather.speed
   return (
     <AppFrame>
       <Paper>
@@ -43,7 +46,7 @@ const CityPage = () => {
               <Weather temperature={temperature} state={state} />
             </Grid>
             <Grid item>
-              <WeatherDetails humidity={humidity} wind={wind} />
+              {humidity && speed && <WeatherDetails humidity={humidity} wind={speed} />}
             </Grid>
           </Grid>
           <Grid>

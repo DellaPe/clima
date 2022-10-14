@@ -55,12 +55,12 @@ const useCityList = (cities) => {
         })*/
     };
     //Recorremos el arreglo de ciuddades que carguemos
-    cities.forEach(({ city, countryCode }) => {
-      setWeather(city, countryCode);
+    cities.forEach(({ city, country }) => {
+      setWeather(city, country);
     });
   }, [cities]); //Todo el useEffect se va a volver a correr si se modifica cities
-
   return { allWeather, error, setError };
+
 };
 
 export default useCityList;

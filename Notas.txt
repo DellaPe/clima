@@ -143,3 +143,8 @@
 
 30) hooks personalizados
     >   siempre tiene que iniciar use
+
+31) LinealProgress '@mui/material'
+    >   Agrega una linea de carga
+
+32) Problemas de solicitar info a la api a cada rato => useMemo
