@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react'
+import {  useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import axios from "axios"
 
@@ -6,32 +6,39 @@ import axios from "axios"
 import {getForecastUrl} from './../utils/urls'
 import  getData  from "./../utils/transform/getData"
 
-const useCityPage = () => {
+import getCityCode from "./../utils/getCityCode"
+
+const useCityPage = ( onSetData, onSetForecastItemList, allData, allForecastItemList) => {
   const { city, country} = useParams();
   
 
-  const [data, setData] = useState(null);
-  const [forecastItemList, setForecastItemList] = useState(null);
+  //const [data, setData] = useState(null);
+  //const [forecastItemList, setForecastItemList] = useState(null);
 
   useEffect(() => {
     const url = getForecastUrl(city, country)
+    const cityCode = getCityCode(city, country)
 
     const FuncAsync = async () => {
       try {
         const { data } = await axios.get(url);
         
         const {dataAux, forecastItemListAux} = getData(data)
-        setData(dataAux);
-        setForecastItemList(forecastItemListAux);
+        
+        onSetData({[cityCode] : dataAux});
+        onSetForecastItemList({ [cityCode] : forecastItemListAux });
+
       } catch (error) {
         console.log(error);
       }
     };
+  
+    if (allData && allForecastItemList && !allData[cityCode] && !allForecastItemList[cityCode] ) {
+      FuncAsync();
+    }
+  }, [city, country, onSetData, onSetForecastItemList, allData, allForecastItemList]);
 
-    FuncAsync();
-  }, [city, country]);
-
-  return {city, country, data, forecastItemList}
+  return {city, country}
 };
 
 export default useCityPage;

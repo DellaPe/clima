@@ -16,13 +16,22 @@ import useCityList from '../hooks/useCityList'
 
 import getCityCode from "./../utils/getCityCode"
 
-const CityPage = () => {
-  
-  const {city, country, data, forecastItemList} = useCityPage()
+const CityPage = ({dataAll, actions}) => {
+  const { allWeather, allData, allForecastItemList } = dataAll
+  const { onSetAllWeather, onSetData, onSetForecastItemList } = actions
+  const {city, country} = useCityPage(onSetData, onSetForecastItemList, allData, allForecastItemList)
   //Vemos si cambiar el valor de city y de country
   const cities = React.useMemo( () => ([{city, country}]),[city, country]) //Recordar que es como tener un return
-  const { allWeather } = useCityList(cities)
-  const weather = allWeather[getCityCode(city, country)]
+  useCityList(cities, allWeather, onSetAllWeather)
+  
+  const cityCode = getCityCode(city, country)
+  
+  const weather = allWeather[cityCode]
+  const data = allData[cityCode]
+  const forecastItemList = allForecastItemList[cityCode]
+
+
+
 
   const temperature = weather && weather.temperature
   const state = weather && weather.state

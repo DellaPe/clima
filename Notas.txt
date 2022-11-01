@@ -148,3 +148,33 @@
     >   Agrega una linea de carga
 
 32) Problemas de solicitar info a la api a cada rato => useMemo
+
+33) Para el caso de setAllWeather voy a necesitar un componente para que me lleve los datos a un nivel superior 
+    >   por eso creo onSetAllWeather
+    >   tiene que llegar como parametro a useCityList
+    >   Vamos a CityList y lo ponemos como parametro 
+    >   Tambien lo tenemos que llevar a MainPage para que pueda llegar a CityList}
+    >   Ahora lo tenemos que llevar app
+    >   Liego llevamos arriba de todo 
+        -   const [allWeather, setAllWeather] = useState({}); (nivel app)
+
+34) Ahora neceitamos que allWeather baje la info a los componenctes que lo necesitan.
+
+35) Para que en city page no se vuelvan a cargar los datos verificamos en useCityList si allWeather tiene algo. (Recordar ponerlos en todos lados igual)
+
+36) En useCityList
+    >   Elimino [cities, onSetAllWeather, allWeather] (las dependencias) para solo pedier datar al server 1 sola vez y eseprar que me responda 
+    >   Haciendo esto se vuelve un componente Residiente
+    >   Estoy resulve el prome pero no esta bien. 
+
+37) Para no pedir varias veces al servidor los datos en MaundPage hacemos:
+    >   Creo el objeto onSetAllWeather({ [getCityCode(city, country)]: {} }) (basio)
+
+38) useCallback es mejor que useMemo
+    >   No traba con la funcion, solo eso.
+
+39) Creamos actions para no repetir peticiones con el pronostico extendido. Va conter onSetAllWeather y algo mas para no tener que ir pasando de funcion a funcion
+
+40) Creamos data para no repetir la info. Va conter allWeather y algo mas para no tener que ir pasando de funcion a funcion
+
+41) Creamos onSetData, onSetForecastItemList para tener los datos mas arriba y no solocitarlos simepre el server.
