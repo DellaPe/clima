@@ -37,8 +37,7 @@ const renderCityAndCountry =
 
 const CityList = ({ cities, onClickCity, actions, dataAll }) => {
     const {allWeather} = dataAll
-    const {onSetAllWeather} = actions
-    const { error, setError } = useCityList(cities, allWeather, onSetAllWeather) //Elimino el allWeather que habia aca porque me viene como dato
+    const { error, setError } = useCityList(cities, allWeather, actions) //Elimino el allWeather que habia aca porque me viene como dato
     return (
         <div>
             {

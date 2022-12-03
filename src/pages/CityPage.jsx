@@ -18,11 +18,11 @@ import getCityCode from "./../utils/getCityCode"
 
 const CityPage = ({dataAll, actions}) => {
   const { allWeather, allData, allForecastItemList } = dataAll
-  const { onSetAllWeather, onSetData, onSetForecastItemList } = actions
-  const {city, country} = useCityPage(onSetData, onSetForecastItemList, allData, allForecastItemList)
+  // const { onSetAllWeather, onSetData, onSetForecastItemList } = actions
+  const {city, country} = useCityPage(actions, allData, allForecastItemList)
   //Vemos si cambiar el valor de city y de country
   const cities = React.useMemo( () => ([{city, country}]),[city, country]) //Recordar que es como tener un return
-  useCityList(cities, allWeather, onSetAllWeather)
+  useCityList(cities, allWeather, actions)
   
   const cityCode = getCityCode(city, country)
   

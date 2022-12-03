@@ -8,7 +8,7 @@ import  getData  from "./../utils/transform/getData"
 
 import getCityCode from "./../utils/getCityCode"
 
-const useCityPage = ( onSetData, onSetForecastItemList, allData, allForecastItemList) => {
+const useCityPage = ( actions, allData, allForecastItemList) => {
   const { city, country} = useParams();
   
 
@@ -24,9 +24,8 @@ const useCityPage = ( onSetData, onSetForecastItemList, allData, allForecastItem
         const { data } = await axios.get(url);
         
         const {dataAux, forecastItemListAux} = getData(data)
-        
-        onSetData({[cityCode] : dataAux});
-        onSetForecastItemList({ [cityCode] : forecastItemListAux });
+        actions({ type: 'SET_CHART_DATA', payload: {[cityCode] : dataAux}})
+        actions({ type: 'SET_FORECAST_ITEM_LIST', patload: { [cityCode] : forecastItemListAux }})
 
       } catch (error) {
         console.log(error);
@@ -36,7 +35,7 @@ const useCityPage = ( onSetData, onSetForecastItemList, allData, allForecastItem
     if (allData && allForecastItemList && !allData[cityCode] && !allForecastItemList[cityCode] ) {
       FuncAsync();
     }
-  }, [city, country, onSetData, onSetForecastItemList, allData, allForecastItemList]);
+  }, [city, country, actions, allData, allForecastItemList]);
 
   return {city, country}
 };

@@ -5,7 +5,7 @@ import { getWeatherUrl } from "./../utils/urls";
 import getCityCode from "./../utils/getCityCode"
 import getAllWeather from "./../utils/transform/getAllWeather";
 
-const useCityList = (cities, allWeather,onSetAllWeather) => {
+const useCityList = (cities, allWeather,actions) => {
     /*
           [Buenas Aires-Argentina]: { datos }
           [Lima-Peru]: { datos }...
@@ -20,12 +20,14 @@ const useCityList = (cities, allWeather,onSetAllWeather) => {
 
             try {
                 const propsName = [getCityCode(city, country)];
-                onSetAllWeather({ [propsName]: {} })
+                // onSetAllWeather({ [propsName]: {} })
+                actions({type: 'SET_ALL_WEATHER',  payload: { [propsName]: {} }})
                 const response = await axios.get(url); //Ingresa a cada ciudad y me trae los datos
                 const setAllWeatherAux = getAllWeather(response, city, country);
 
                 //setAllWeather((allWeather) => ({...allWeather, ...setAllWeatherAux})); //[Buenas Aires-Argentina]: { datos }
-                onSetAllWeather({...setAllWeatherAux}); //De aca eliminamos allWeather
+                // onSetAllWeather({...setAllWeatherAux}); //De aca eliminamos allWeather
+                actions({type: 'SET_ALL_WEATHER',  payload: setAllWeatherAux })
             } catch (error) {
                 if (error.response) {
                     setError("Error de servidor");
@@ -61,7 +63,7 @@ const useCityList = (cities, allWeather,onSetAllWeather) => {
               setWeather(city, country);
             }
         });
-    }, [cities, onSetAllWeather, allWeather]); //Todo el useEffect se va a volver a correr si se modifica cities (Array de dependencias)
+    }, [cities, actions, allWeather]); //Todo el useEffect se va a volver a correr si se modifica cities (Array de dependencias)
     return { error, setError};
 };
 
