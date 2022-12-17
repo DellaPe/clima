@@ -178,3 +178,5 @@
 40) Creamos data para no repetir la info. Va conter allWeather y algo mas para no tener que ir pasando de funcion a funcion
 
 41) Creamos onSetData, onSetForecastItemList para tener los datos mas arriba y no solocitarlos simepre el server.
+
+42) Se creo const reducer = (state, action) en App para mejor todo lo anterior y solo hacer las cosas de una llamada. 
