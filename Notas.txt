@@ -180,3 +180,11 @@
 41) Creamos onSetData, onSetForecastItemList para tener los datos mas arriba y no solocitarlos simepre el server.
 
 42) Se creo const reducer = (state, action) en App para mejor todo lo anterior y solo hacer las cosas de una llamada. 
+
+43) Analizando los tiempos de render nos damos cuentas que tenemos que usar useMemo para evitar renderizar otra vez las cosa.
+
+44) Para usar useMemo tenemos que separar el componente city list que renderiza.
+
+45) Creo CityListItem y utilizo React.memo en los 2 componnetes. (Esto no me garantiza que funque)
+
+46) 
