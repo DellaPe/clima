@@ -5,11 +5,11 @@ import { Paper } from "@mui/material";
 import CityList from "./../components/CityList";
 import { getCities } from "./../utils/serviceCities";
 
-const MainPage = ({ dataAll ,actions }) => {
+const MainPage = ({ dataAll, actions }) => {
     const history = useHistory();
-    const onClickHandler = (city, country) => {
+    const onClickHandler = React.useCallback((city, country) => {
         history.push(`/city/${country}/${city}`);
-    };
+    }, [history]);
 
     return (
         <AppFrame>

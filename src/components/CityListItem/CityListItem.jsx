@@ -3,10 +3,7 @@ import Grid from "@mui/material/grid";
 import CityInfo from "./../CityInfo";
 import Weather from "./../Weather";
 import { ListItem } from "@mui/material";
-const areEqual = (prev, next) = {
-    debugger
-    console.log({})
-}
+
 const CityListItem = ({ city, country, weather, eventOnClickCity }) => {
     return (
         //sm={8} para tamaños sm para arriba 8 + 4, para el resto 12

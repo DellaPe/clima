@@ -1,39 +1,39 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useCallback } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import WelcomePage from "./pages/WelcomePage";
 import MainPage from "./pages/MainPage";
 import CityPage from "./pages/CityPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
+const initialValue = {
+  allWeather: {},
+  allData: {},
+  allForecastItemList: {}
+}
 
 const App = () => {
-  const initialValue = {
-    allWeather: {},
-    allData: {},
-    allForecastItemList: {}
-  }
-  const reducer = (state, action) => {
+  const reducer = useCallback((state, action) => {
     //state va a traer el initialValue anterio
     switch (action.type) {
       case 'SET_CHART_DATA':
         const chartData = action.payload
-        const newChartData = {...state.allData, ...chartData}
-        return {...state, allData: newChartData}
+        const newChartData = { ...state.allData, ...chartData }
+        return { ...state, allData: newChartData }
 
       case 'SET_FORECAST_ITEM_LIST':
         const cityForecast = action.payload
-        const newAllForecastItemList = { ...state.allForecastItemList, ...cityForecast}
-        return {...state, allForecastItemList: newAllForecastItemList}
+        const newAllForecastItemList = { ...state.allForecastItemList, ...cityForecast }
+        return { ...state, allForecastItemList: newAllForecastItemList }
 
       case 'SET_ALL_WEATHER':
         const weatherCity = action.payload
-        const newAllWeather = {...state.allWeather, ...weatherCity }
-        return {...state, allWeather: newAllWeather}
+        const newAllWeather = { ...state.allWeather, ...weatherCity }
+        return { ...state, allWeather: newAllWeather }
 
-      default: 
+      default:
         return state
     }
-  }
+  }, [])
   const [state, dispatch] = useReducer(reducer, initialValue)
 
   /*

@@ -187,4 +187,4 @@
 
 45) Creo CityListItem y utilizo React.memo en los 2 componnetes. (Esto no me garantiza que funque)
 
-46) 
+46) Para buscar el culpable usamos el areEqual en CityListItem con ,)
