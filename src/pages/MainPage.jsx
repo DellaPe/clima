@@ -1,28 +1,23 @@
 import React from 'react'
-import AppFrame from "./../components/AppFrame"
+import AppFrame from './../components/AppFrame'
 import { useHistory } from 'react-router-dom'
 import { Paper } from '@mui/material'
-import CityList from "./../components/CityList"
-
-const cities = [
-  {city: "Tapalqué", country: "Argentina"},
-  {city: "La Plata", country: "Argentina"},
-  {city: "Lima", country: "Perú"},
-  {city: "Madrid", country: "España"},
-]
+import CityList from './../components/CityList'
+import { getCities } from './../utils/serviceCities'
 
 const MainPage = () => {
   const history = useHistory()
-  const onClickHandler = (city, country) => {
+  const onClickHandler = React.useCallback((city, country) => {
     history.push(`/city/${country}/${city}`)
-  }
+  }, [history])
 
   return (
     <AppFrame>
       <Paper elevation={4}>
-        <CityList 
-          cities={cities}
-          onClickCity={onClickHandler}/>
+        <CityList
+          cities={getCities()}
+          onClickCity={onClickHandler}
+        />
       </Paper>
     </AppFrame>
   )

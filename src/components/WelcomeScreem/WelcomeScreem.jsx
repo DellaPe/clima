@@ -1,13 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
 import Clouds from "vanta/dist/vanta.clouds.min"
 import * as THREE from "three"
 
 const WelcomeScreem = ({ children }) => {
   const myrefDiv = useRef(null)
   const [Vanta, setVanta] = useState(0)
-  console.log("myRefDiv: ", myrefDiv.current)
-
   useEffect(() => {
     //Solo pasa una vez por el if
     //Vanta === False
