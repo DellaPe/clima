@@ -1,9 +1,11 @@
-import React, { useReducer, useCallback } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import WelcomePage from "./pages/WelcomePage";
-import MainPage from "./pages/MainPage";
-import CityPage from "./pages/CityPage";
-import NotFoundPage from "./pages/NotFoundPage";
+import React, { useReducer, useCallback } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import WelcomePage from './pages/WelcomePage'
+import MainPage from './pages/MainPage'
+import CityPage from './pages/CityPage'
+import NotFoundPage from './pages/NotFoundPage'
+
+import { WeatherDispatchContext, WeatherStateContext } from './WeatherContext'
 
 const initialValue = {
   allWeather: {},
@@ -13,22 +15,24 @@ const initialValue = {
 
 const App = () => {
   const reducer = useCallback((state, action) => {
-    //state va a traer el initialValue anterio
+    // state va a traer el initialValue anterio
+    let data
+    let newData
     switch (action.type) {
       case 'SET_CHART_DATA':
-        const chartData = action.payload
-        const newChartData = { ...state.allData, ...chartData }
-        return { ...state, allData: newChartData }
+        data = action.payload
+        newData = { ...state.allData, ...data }
+        return { ...state, allData: newData }
 
       case 'SET_FORECAST_ITEM_LIST':
-        const cityForecast = action.payload
-        const newAllForecastItemList = { ...state.allForecastItemList, ...cityForecast }
-        return { ...state, allForecastItemList: newAllForecastItemList }
+        data = action.payload
+        newData = { ...state.allForecastItemList, ...data }
+        return { ...state, allForecastItemList: newData }
 
       case 'SET_ALL_WEATHER':
-        const weatherCity = action.payload
-        const newAllWeather = { ...state.allWeather, ...weatherCity }
-        return { ...state, allWeather: newAllWeather }
+        data = action.payload
+        newData = { ...state.allWeather, ...data }
+        return { ...state, allWeather: newData }
 
       default:
         return state
@@ -36,62 +40,28 @@ const App = () => {
   }, [])
   const [state, dispatch] = useReducer(reducer, initialValue)
 
-  /*
-      const [allWeather, setAllWeather] = useState({});
-      const [allData, setAllData] = useState({});
-      const [allForecastItemList, setForecastItemList] = useState({});
-  
-      //Creamo esta funcion porque no podemos pasar como parametro setAllWeather a onSetAllWeather (pero esta funcuion si la podemos mandar)
-      const onSetAllWeather = useCallback(
-          (weatherCity) => {
-              setAllWeather((allWeather) => ({ ...allWeather, ...weatherCity }));
-          },
-          [setAllWeather]
-      ); //Asi no dijamos el listado anterior
-  
-      const onSetData = useCallback( (dataCity) => {
-          setAllData( (data) => ({ ...data, ...dataCity}))
-      },
-      [setAllData]
-      );
-  
-      const onSetForecastItemList = useCallback(
-          (cityForecast) => {
-              setForecastItemList( (forecastItemList) => ({ ...forecastItemList, ...cityForecast}))
-          },
-          [setForecastItemList]
-      );
-      
-      const actions = useMemo(() => (
-          {
-              onSetAllWeather, onSetData, onSetForecastItemList
-          }
-      ),[onSetAllWeather, onSetData, onSetForecastItemList]);
-  
-      const dataAll = useMemo(() => (
-          {
-              allWeather, allData, allForecastItemList
-          }
-      ),[allWeather, allData, allForecastItemList]);
-  */
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <WelcomePage />
-        </Route>
-        <Route path="/main">
-          <MainPage dataAll={state} actions={dispatch} />
-        </Route>
-        <Route path="/city/:country/:city">
-          <CityPage dataAll={state} actions={dispatch} />
-        </Route>
-        <Route>
-          <NotFoundPage />
-        </Route>
-      </Switch>
-    </Router>
-  );
-};
-//Poenr el Ruter de "/" al final o poner exact
-export default App;
+    <WeatherDispatchContext.Provider value={dispatch}>
+      <WeatherStateContext.Provider value={state}>
+        <Router>
+          <Switch>
+            <Route exact path='/'>
+              <WelcomePage />
+            </Route>
+            <Route path='/main'>
+              <MainPage />
+            </Route>
+            <Route path='/city/:country/:city'>
+              <CityPage dataAll={state} actions={dispatch} />
+            </Route>
+            <Route>
+              <NotFoundPage />
+            </Route>
+          </Switch>
+        </Router>
+      </WeatherStateContext.Provider>
+    </WeatherDispatchContext.Provider>
+  )
+}
+// Poenr el Ruter de "/" al final o poner exact
+export default App
