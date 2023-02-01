@@ -1,15 +1,15 @@
 import React from 'react'
 import AppFrame from './../components/AppFrame'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Paper } from '@mui/material'
 import CityList from './../components/CityList'
 import { getCities } from './../utils/serviceCities'
 
 const MainPage = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const onClickHandler = React.useCallback((city, country) => {
-    history.push(`/city/${country}/${city}`)
-  }, [history])
+    navigate(`/city/${country}/${city}`)
+  }, [navigate])
 
   return (
     <AppFrame>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Alert, List } from '@mui/material'
 // utils
@@ -7,7 +7,7 @@ import getCityCode from './../../utils/getCityCode'
 import useCityList from './../../hooks/useCityList'
 // Nuevo componente
 import CityListItem from '../CityListItem/CityListItem'
-import { WeatherDispatchContext, WeatherStateContext } from '../../WeatherContext'
+import { useWeatherStateContext, useWeatherDispatchContext } from '../../WeatherContext'
 
 const renderCityAndCountry =
   (eventOnClickCity) => (cityAndCountry, weather) => {
@@ -18,8 +18,8 @@ const renderCityAndCountry =
   }
 
 const CityList = ({ cities, onClickCity }) => {
-  const actions = useContext(WeatherDispatchContext)
-  const { allWeather } = useContext(WeatherStateContext)
+  const { allWeather } = useWeatherStateContext()
+  const actions = useWeatherDispatchContext()
   const { error, setError } = useCityList(cities, allWeather, actions) // Elimino el allWeather que habia aca porque me viene como dato
   return (
     <div>

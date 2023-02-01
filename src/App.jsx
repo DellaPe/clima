@@ -1,11 +1,11 @@
 import React, { useReducer, useCallback } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import WelcomePage from './pages/WelcomePage'
 import MainPage from './pages/MainPage'
 import CityPage from './pages/CityPage'
 import NotFoundPage from './pages/NotFoundPage'
 
-import { WeatherDispatchContext, WeatherStateContext } from './WeatherContext'
+import { WeatherContext } from './WeatherContext'
 
 const initialValue = {
   allWeather: {},
@@ -41,26 +41,19 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialValue)
 
   return (
-    <WeatherDispatchContext.Provider value={dispatch}>
-      <WeatherStateContext.Provider value={state}>
-        <Router>
-          <Switch>
-            <Route exact path='/'>
-              <WelcomePage />
-            </Route>
-            <Route path='/main'>
-              <MainPage />
-            </Route>
-            <Route path='/city/:country/:city'>
-              <CityPage dataAll={state} actions={dispatch} />
-            </Route>
-            <Route>
-              <NotFoundPage />
-            </Route>
-          </Switch>
-        </Router>
-      </WeatherStateContext.Provider>
-    </WeatherDispatchContext.Provider>
+    <WeatherContext>
+      <Router>
+        <Routes>
+          <Route path='/' element={<WelcomePage />} />
+
+          <Route path='/main' element={<MainPage />} />
+
+          <Route path='/city/:country/:city' element={<CityPage dataAll={state} actions={dispatch} />} />
+
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </Router>
+    </WeatherContext>
   )
 }
 // Poenr el Ruter de "/" al final o poner exact

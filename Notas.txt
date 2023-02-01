@@ -73,7 +73,7 @@
         -   <a> va entrer el Router contenedo y el swicth contenedor de los otros routers
 
 16) hooks nos permite modificar el componente de forma activa
-    >   import { useHistory } from 'react-router-dom' 
+    >   import { useHistory } from 'react-router-dom' (actualizado) 
         -   para manipular la historia del navegador.
         -   Cambiamos el url de forma activa, no como el ancla que es link
 
@@ -188,3 +188,9 @@
 45) Creo CityListItem y utilizo React.memo en los 2 componnetes. (Esto no me garantiza que funque)
 
 46) Para buscar el culpable usamos el areEqual en CityListItem con ,)
+
+47) Se creo WeatherContext para que no sea necesario pasar la data a los objetos que no lo usen
+
+48) al actualizar react-router-dom 
+    Switch => Routers
+    useHistory => useNavigate

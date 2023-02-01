@@ -1,57 +1,63 @@
-import React from 'react'
+import React, { useContext, useReducer } from 'react'
 
 export const WeatherStateContext = React.createContext()
 export const WeatherDispatchContext = React.createContext()
+export const useWeatherStateContext = () => {
+  const state = useContext(WeatherStateContext)
+  if (!state) {
+    throw Error('Must set state provider')
+  }
+  return state
+}
+export const useWeatherDispatchContext = () => {
+  const dispatch = useContext(WeatherDispatchContext)
+  if (!dispatch) {
+    throw Error('Must set dispatch provider')
+  }
+  return dispatch
+}
 
-// export const useWeatherStateContext = () => {
-//   return useContext(WeatherStateContext)
-// }
+const initialValue = {
+  allWeather: {},
+  allData: {},
+  allForecastItemList: {}
+}
 
-// export const useWeatherDispatchContext = () => {
-//   const dispatch = useContext(WeatherDispatchContext)
-//   return dispatch
-// }
+const reducer = (state, action) => {
+  // state va a traer el initialValue anterio
+  let data
+  let newData
+  switch (action.type) {
+    case 'SET_CHART_DATA':
+      data = action.payload
+      newData = { ...state.allData, ...data }
+      return { ...state, allData: newData }
 
-// export const WeatherContext = ({ children }) => {
-//   const initialValue = {
-//     allWeather: {},
-//     allData: {},
-//     allForecastItemList: {}
-//   }
+    case 'SET_FORECAST_ITEM_LIST':
+      data = action.payload
+      newData = { ...state.allForecastItemList, ...data }
+      return { ...state, allForecastItemList: newData }
 
-//   const reducer = useCallback((state, action) => {
-//     // state va a traer el initialValue anterio
-//     let data
-//     let newData
-//     switch (action.type) {
-//       case 'SET_CHART_DATA':
-//         data = action.payload
-//         newData = { ...state.allData, ...data }
-//         return { ...state, allData: newData }
+    case 'SET_ALL_WEATHER':
+      data = action.payload
+      newData = { ...state.allWeather, ...data }
+      return { ...state, allWeather: newData }
 
-//       case 'SET_FORECAST_ITEM_LIST':
-//         data = action.payload
-//         newData = { ...state.allForecastItemList, ...data }
-//         return { ...state, allForecastItemList: newData }
+    default:
+      return state
+  }
+}
 
-//       case 'SET_ALL_WEATHER':
-//         data = action.payload
-//         newData = { ...state.allWeather, ...data }
-//         return { ...state, allWeather: newData }
-
-//       default:
-//         return state
-//     }
-//   }, [])
-//   const [state, dispatch] = useReducer(reducer, initialValue)
-//   return (
-//     <WeatherDispatchContext.Provider value={dispatch}>
-//       <WeatherStateContext.Provider value={state}>
-//         {children}
-//       </WeatherStateContext.Provider>
-//     </WeatherDispatchContext.Provider>
-//   )
-// }
+export const WeatherContext = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialValue)
+  return (
+    <WeatherDispatchContext.Provider value={dispatch}>
+      <WeatherStateContext.Provider value={state}>
+        {children}
+      </WeatherStateContext.Provider>
+    </WeatherDispatchContext.Provider>
+  )
+}
 
 /*
       const [allWeather, setAllWeather] = useState({});
