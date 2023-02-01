@@ -3,8 +3,8 @@ import React from 'react'
 import Forecast from './Forecast'
 
 export default {
-  component: Forcast,
-  title: 'Forcast'
+  component: Forecast,
+  title: 'Forecast'
 }
 const forecastItemList = [
   { weekDay: 'Lunes', hour: 12, state: 'sun', temperature: 20 },

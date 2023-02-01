@@ -7,6 +7,12 @@ export default {
   title: 'Weather'
 }
 
-export const WratherSun = () => (<Weather temperature={15} state='sun' />)
+const Template = (args) => (<Weather {...args} />)
 
-export const WratherHot = () => (<Weather temperature={40} state='hot' />)
+// temperature={15} state='sun'
+// temperature={40} state='hot'
+export const WratherSun = Template.bind({})
+WratherSun.args = { temperature: 15, state: 'sun' }
+
+export const WratherHot = Template.bind({})
+WratherHot.args = { temperature: 40, state: 'hot' }

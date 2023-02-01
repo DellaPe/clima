@@ -8,4 +8,6 @@ export default {
 }
 
 // sub items que el objeto puede visualizar
-export const CityExample = () => (<CityInfo city='Buenas Aires' country='Argentina' />)
+export const CityExample = (args) => (<CityInfo {...args} />)
+
+CityExample.args = { city: 'Buenas Aires', country: 'Argentina' }

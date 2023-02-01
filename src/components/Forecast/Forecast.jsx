@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Grid from '@mui/material/grid'
 
-import { validValuesState } from './../IconState'
+import { validValuesState } from '../IconState'
 
-import ForecastItem from './../ForecastItem'
+import ForecastItem from '../ForecastItem'
 
 const renderForecastItem = forecast => {
   const { weekDay, hour, state, temperature } = forecast

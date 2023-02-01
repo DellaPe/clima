@@ -8,8 +8,6 @@ export default {
 
 export const AppFrameExample = () => (
   <Router>
-    <AppFrame>
-      sdf df df sdf s df sdf f s fds
-    </AppFrame>
+    <AppFrame />
   </Router>
 )
