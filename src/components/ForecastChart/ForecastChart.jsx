@@ -5,17 +5,18 @@ import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Responsi
 const ForecastChart = ({ data }) => {
   const marginSize = useMemo(() => ({ top: 20, botton: 20, left: 5, right: 5 }), [])
   return (
-    <ResponsiveContainer height={250} width={"95%"}>
+    <ResponsiveContainer height={250} width='95%'>
       <LineChart
         margin={marginSize}
-        data={data}>
-        <CartesianGrid></CartesianGrid>
-        <XAxis dataKey="dayHour"></XAxis>
-        <YAxis></YAxis>
-        <Tooltip></Tooltip>
-        <Legend></Legend>
-        <Line type="monotone" dataKey="max" stroke="#0000FF" ></Line>
-        <Line type="monotone" dataKey="min" stroke="#FF0000" ></Line>
+        data={data}
+      >
+        <CartesianGrid />
+        <XAxis dataKey='dayHour' />
+        <YAxis />
+        <Tooltip />
+        <Legend />
+        <Line type='monotone' dataKey='max' stroke='#0000FF' />
+        <Line type='monotone' dataKey='min' stroke='#FF0000' />
       </LineChart>
     </ResponsiveContainer>
   )

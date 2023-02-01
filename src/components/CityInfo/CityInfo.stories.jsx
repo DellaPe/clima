@@ -1,12 +1,11 @@
-import React from 'react';
+import React from 'react'
 import 'typeface-roboto'
-import CityInfo from './CityInfo';
+import CityInfo from './CityInfo'
 
 export default {
-    component: CityInfo, // Compenente asociado a la historia
-    title: "CityInfo",   // Titulo de la historia
-};
+  component: CityInfo, // Compenente asociado a la historia
+  title: 'CityInfo' // Titulo de la historia
+}
 
-//sub items que el objeto puede visualizar 
-export const CityExample = () => (<CityInfo city="Buenas Aires" country="Argentina" ></CityInfo>)
-
+// sub items que el objeto puede visualizar
+export const CityExample = () => (<CityInfo city='Buenas Aires' country='Argentina' />)

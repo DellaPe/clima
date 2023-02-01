@@ -1,14 +1,12 @@
-import React from 'react';
-import {render} from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect';
+import React from 'react'
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
 
-import Weather from './Weather';
+import Weather from './Weather'
 
 test('Weather Render sun', async () => {
-    const {findAllByRole} = render(<Weather temperature={10} state="WiDaySunny"/>)
-    const renderTestResult = await findAllByRole("heading")
+  const { findAllByRole } = render(<Weather temperature={10} state='WiDaySunny' />)
+  const renderTestResult = await findAllByRole('heading')
 
-    expect(renderTestResult[0]).toHaveTextContent('10')
+  expect(renderTestResult[0]).toHaveTextContent('10')
 })
-
-

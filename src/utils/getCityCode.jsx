@@ -1,3 +1,3 @@
-const getCityCode = (city, countryCode) => `${city}-${countryCode}`;
+const getCityCode = (city, countryCode) => `${city}-${countryCode}`
 
-export default getCityCode;
+export default getCityCode

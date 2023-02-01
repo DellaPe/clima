@@ -1,50 +1,47 @@
-import React from "react";
-import ForecastChart from "./ForecastChart";
+import React from 'react'
+import ForecastChart from './ForecastChart'
 
 const data = [
-    {
-        "dayHour": "Jue 18",
-        "min": 14,
-        "max": 22,
-    },
-    {
-        "dayHour": "Vie 06",
-        "min": 18,
-        "max": 27,
-    },
-    {
-        "dayHour": "Vie 12",
-        "min": 18,
-        "max": 28,
-    },
-    {
-        "dayHour": "Vie 18",
-        "min": 18,
-        "max": 25,
-    },
-    {
-        "dayHour": "Sab 06",
-        "min": 15,
-        "max": 22,
-    },
-    {
-        "dayHour": "Sab 12",
-        "min": 12,
-        "max": 19,
-    }
+  {
+    dayHour: 'Jue 18',
+    min: 14,
+    max: 22
+  },
+  {
+    dayHour: 'Vie 06',
+    min: 18,
+    max: 27
+  },
+  {
+    dayHour: 'Vie 12',
+    min: 18,
+    max: 28
+  },
+  {
+    dayHour: 'Vie 18',
+    min: 18,
+    max: 25
+  },
+  {
+    dayHour: 'Sab 06',
+    min: 15,
+    max: 22
+  },
+  {
+    dayHour: 'Sab 12',
+    min: 12,
+    max: 19
+  }
 ]
 
-
-
 export default {
-    component: ForecastChart,
-    title: "Forecast Chart"
-} 
+  component: ForecastChart,
+  title: 'Forecast Chart'
+}
 
 export const ForecastChartExample = () => (
-    <ForecastChart data={data} />
+  <ForecastChart data={data} />
 )
-
 
 // dia y hora: "DDD HH"
 // Tres posiciones para el día y dos para la hora

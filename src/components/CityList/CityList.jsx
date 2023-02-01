@@ -7,7 +7,7 @@ import getCityCode from './../../utils/getCityCode'
 import useCityList from './../../hooks/useCityList'
 // Nuevo componente
 import CityListItem from '../CityListItem/CityListItem'
-import { useWeatherDispatchContext, useWeatherStateContext } from '../../WeatherContext'
+import { WeatherDispatchContext, WeatherStateContext } from '../../WeatherContext'
 
 const renderCityAndCountry =
   (eventOnClickCity) => (cityAndCountry, weather) => {
@@ -18,8 +18,8 @@ const renderCityAndCountry =
   }
 
 const CityList = ({ cities, onClickCity }) => {
-  const actions = useWeatherDispatchContext
-  const { allWeather } = useWeatherStateContext()
+  const actions = useContext(WeatherDispatchContext)
+  const { allWeather } = useContext(WeatherStateContext)
   const { error, setError } = useCityList(cities, allWeather, actions) // Elimino el allWeather que habia aca porque me viene como dato
   return (
     <div>

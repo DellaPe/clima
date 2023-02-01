@@ -1,9 +1,9 @@
-import React from "react";
-import WelcomeScreem from "./WelcomeScreem";
+import React from 'react'
+import WelcomeScreem from './WelcomeScreem'
 
 export default {
-    component: WelcomeScreem,
-    title: "Welcome Screem"
+  component: WelcomeScreem,
+  title: 'Welcome Screem'
 }
 
-export const WelcomeScreemExample = () => (<WelcomeScreem></WelcomeScreem>)
+export const WelcomeScreemExample = () => (<WelcomeScreem />)
