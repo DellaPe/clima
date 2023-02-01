@@ -1,1 +1,1 @@
-export {default, validValuesState} from "./IconState"
+export { default, validValuesState } from './IconState'

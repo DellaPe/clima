@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
-import ErrorBoundary from "./ErrorBoundary"
+import ErrorBoundary from './ErrorBoundary'
 
 export default {
-    component: ErrorBoundary,
-    title: "Error Boundary"
+  component: ErrorBoundary,
+  title: 'Error Boundary'
 }
 
-export const ErrorBoundaryExample = () => <ErrorBoundary /> 
+export const ErrorBoundaryExample = () => <ErrorBoundary />

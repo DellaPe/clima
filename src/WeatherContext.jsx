@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useCallback } from 'react'
+import React from 'react'
 
 export const WeatherStateContext = React.createContext()
 export const WeatherDispatchContext = React.createContext()

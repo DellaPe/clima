@@ -1,1 +1,1 @@
-export { default } from "./CityListItem"
+export { default } from './CityListItem'
