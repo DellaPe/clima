@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/clima/static/css/main.224f6e0a.css",
-    "main.js": "/clima/static/js/main.7d6767e6.js",
+    "main.js": "/clima/static/js/main.aa6400f2.js",
     "index.html": "/clima/index.html",
     "main.224f6e0a.css.map": "/clima/static/css/main.224f6e0a.css.map",
-    "main.7d6767e6.js.map": "/clima/static/js/main.7d6767e6.js.map"
+    "main.aa6400f2.js.map": "/clima/static/js/main.aa6400f2.js.map"
   },
   "entrypoints": [
     "static/css/main.224f6e0a.css",
-    "static/js/main.7d6767e6.js"
+    "static/js/main.aa6400f2.js"
   ]
 }
