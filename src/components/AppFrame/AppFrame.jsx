@@ -15,7 +15,7 @@ const AppFrame = ({ children }) => {
       <AppBar position='static'>
         <Toolbar variant='dense'>
           <IconButton color='inherit'>
-            <Link component={LinkRouter} to='/clima/main' color='inherit'>
+            <Link component={LinkRouter} to='/main' color='inherit'>
               <IconContext.Provider value={IconContextSize}>
                 <WiDaySunny />
               </IconContext.Provider>

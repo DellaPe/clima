@@ -38,7 +38,7 @@ const WelcomePage = () => {
               <Link
                 color='inherit'
                 component={LinkRouter}
-                to='/clima/main' className='highlight_2'
+                to='/main' className='highlight_2'
               >
                 Instesar
               </Link>

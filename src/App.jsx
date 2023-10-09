@@ -1,5 +1,5 @@
 import React, { useReducer, useCallback } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import WelcomePage from './pages/WelcomePage'
 import MainPage from './pages/MainPage'
 import CityPage from './pages/CityPage'
@@ -45,13 +45,13 @@ const App = () => {
       <WeatherStateContext.Provider value={state}>
         <Router>
           <Switch>
-            <Route path='/clima'>
+            <Route exact path='/'>
               <WelcomePage />
             </Route>
-            <Route path='/clima/main'>
+            <Route path='/main'>
               <MainPage />
             </Route>
-            <Route path='/clima/city/:country/:city'>
+            <Route path='/city/:country/:city'>
               <CityPage dataAll={state} actions={dispatch} />
             </Route>
             <Route>

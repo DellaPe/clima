@@ -8,7 +8,7 @@ import { getCities } from './../utils/serviceCities'
 const MainPage = () => {
   const history = useHistory()
   const onClickHandler = React.useCallback((city, country) => {
-    history.push(`/clima/city/${country}/${city}`)
+    history.push(`/city/${country}/${city}`)
   }, [history])
 
   return (
