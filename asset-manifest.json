@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/clima/static/css/main.224f6e0a.css",
+    "main.js": "/clima/static/js/main.7b8acc39.js",
+    "index.html": "/clima/index.html",
+    "main.224f6e0a.css.map": "/clima/static/css/main.224f6e0a.css.map",
+    "main.7b8acc39.js.map": "/clima/static/js/main.7b8acc39.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.224f6e0a.css",
+    "static/js/main.7b8acc39.js"
+  ]
+}
