@@ -45,13 +45,13 @@ const App = () => {
       <WeatherStateContext.Provider value={state}>
         <Router>
           <Switch>
-            <Route exact path='clima/welcome'>
+            <Route exact path='/clima/welcome'>
               <WelcomePage />
             </Route>
-            <Route path='clima/main'>
+            <Route path='/clima/main'>
               <MainPage />
             </Route>
-            <Route path='clima/city/:country/:city'>
+            <Route path='/clima/city/:country/:city'>
               <CityPage dataAll={state} actions={dispatch} />
             </Route>
             <Route>

@@ -35,7 +35,7 @@ const NotFoundPage = () => {
             <Link
               color='inherit'
               component={LinkRouter}
-              to='/main' className='highlight_2'
+              to='/clima/main' className='highlight_2'
             >
               Ir a Inicio
             </Link>
